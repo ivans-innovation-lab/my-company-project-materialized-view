@@ -1,4 +1,3 @@
 # my-company-project-materialized-view
 
-The event processor is stateless and listens for events from the event store, applying an action for incoming event messages.
-Each event is used to update a database record that results in an incremental materialized view for describing an aggregate.
+This componentnis an event-listener and processor. It listens for the Events and processes them in whatever way makes the most sense. In this case it just builds and maintains a **materialized view** which tracks the state of the 'Project' aggregate.
