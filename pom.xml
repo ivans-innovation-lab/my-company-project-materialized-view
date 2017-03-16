@@ -7,18 +7,19 @@
 	<packaging>jar</packaging>
 	<name>my company project materialized view</name>
 	<description>Project project - Query side</description>
+	<version>1.0.0</version>
 
 	<parent>
 		<groupId>com.idugalic</groupId>
 		<artifactId>my-company-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.idugalic</groupId>
 			<artifactId>my-company-common-project</artifactId>
-			<version>${project.parent.version} </version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.axonframework</groupId>
