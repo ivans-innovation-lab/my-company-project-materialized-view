@@ -7,12 +7,12 @@
 	<packaging>jar</packaging>
 	<name>my company project materialized view</name>
 	<description>Project project - Query side</description>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 
 	<parent>
 		<groupId>com.idugalic</groupId>
 		<artifactId>my-company-parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<scm>
 		<connection>scm:git:https://github.com/ivans-innovation-lab/my-company-project-materialized-view.git</connection>
@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>com.idugalic</groupId>
 			<artifactId>my-company-common-project</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.axonframework</groupId>
