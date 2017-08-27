@@ -21,14 +21,18 @@ import org.springframework.stereotype.Component;
  */
 @ProcessingGroup("default")
 @Component
-public class ProjectViewEventHandler{
+class ProjectViewEventHandler{
 
     private static final Logger LOG = LoggerFactory.getLogger(ProjectViewEventHandler.class);
-
-    @Autowired
+  
     private ProjectRepository projectRepository;
 
-    @EventHandler
+    @Autowired
+    public ProjectViewEventHandler(ProjectRepository projectRepository) {
+		this.projectRepository = projectRepository;
+	}
+
+	@EventHandler
     public void handle(ProjectCreatedEvent event, @SequenceNumber Long version) {
         LOG.info("ProjectCreatedEvent: [{}] ", event.getId());
         projectRepository.save(new Project(event, version));
