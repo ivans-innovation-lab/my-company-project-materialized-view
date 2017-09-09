@@ -14,27 +14,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Event handler for {@link ProjrcttCreatedEvent}
+ * Event handler for {@link ProjectCreatedEvent}
  * 
  * @author idugalic
  *
  */
 @ProcessingGroup("default")
 @Component
-class ProjectViewEventHandler{
+class ProjectViewEventHandler {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ProjectViewEventHandler.class);
-  
-    private ProjectRepository projectRepository;
+	private static final Logger LOG = LoggerFactory.getLogger(ProjectViewEventHandler.class);
 
-    @Autowired
-    public ProjectViewEventHandler(ProjectRepository projectRepository) {
+	private ProjectRepository projectRepository;
+
+	@Autowired
+	public ProjectViewEventHandler(ProjectRepository projectRepository) {
 		this.projectRepository = projectRepository;
 	}
 
 	@EventHandler
-    public void handle(ProjectCreatedEvent event, @SequenceNumber Long version) {
-        LOG.info("ProjectCreatedEvent: [{}] ", event.getId());
-        projectRepository.save(new Project(event, version));
-    }
+	public void handle(ProjectCreatedEvent event, @SequenceNumber Long version) {
+		LOG.info("ProjectCreatedEvent: [{}] ", event.getId());
+		projectRepository.save(new Project(event, version));
+	}
 }
