@@ -1,6 +1,8 @@
 package com.idugalic.queryside.project.handler;
 
+import com.idugalic.common.project.event.ProjectActivatedEvent;
 import com.idugalic.common.project.event.ProjectCreatedEvent;
+import com.idugalic.common.project.event.ProjectDeactivatedEvent;
 import com.idugalic.queryside.project.domain.Project;
 import com.idugalic.queryside.project.repository.ProjectRepository;
 
@@ -34,7 +36,20 @@ class ProjectViewEventHandler {
 
 	@EventHandler
 	public void handle(ProjectCreatedEvent event, @SequenceNumber Long version) {
-		LOG.info("ProjectCreatedEvent: [{}] ", event.getId());
 		projectRepository.save(new Project(event, version));
+	}
+
+	@EventHandler
+	public void handle(ProjectActivatedEvent event, @SequenceNumber Long version) {
+		Project project = projectRepository.findOne(event.getId());
+		project.setActive(Boolean.TRUE);
+		projectRepository.save(project);
+	}
+
+	@EventHandler
+	public void handle(ProjectDeactivatedEvent event, @SequenceNumber Long version) {
+		Project project = projectRepository.findOne(event.getId());
+		project.setActive(Boolean.FALSE);
+		projectRepository.save(project);
 	}
 }

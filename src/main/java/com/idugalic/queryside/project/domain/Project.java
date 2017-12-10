@@ -23,7 +23,7 @@ public class Project {
     private String siteUrl;
     private String category;
     private String description;
-
+    private Boolean active;
     public Project() {
     }
 
@@ -36,6 +36,7 @@ public class Project {
         this.siteUrl = event.getSiteUrl();
         this.category = event.getCategory();
         this.description = event.getDescription();
+        this.active = Boolean.TRUE;
     }
 
     public Project(String id, Long aggregateVersion, String name, String repoUrl, String siteUrl,
@@ -48,6 +49,7 @@ public class Project {
         this.siteUrl = siteUrl;
         this.category = category;
         this.description = description;
+        this.active = Boolean.TRUE;
     }
 
     public String getId() {
@@ -114,4 +116,11 @@ public class Project {
         this.aggregateVersion = aggregateVersion;
     }
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 }
