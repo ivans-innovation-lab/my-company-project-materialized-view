@@ -42,7 +42,7 @@ class ProjectViewEventHandler {
 
 	@EventHandler
 	public void handle(ProjectActivatedEvent event, @SequenceNumber Long version) {
-		Project project = projectRepository.findOne(event.getId());
+		Project project = projectRepository.findById(event.getId()).get();
 		project.setActive(Boolean.TRUE);
 		project.setAggregateVersion(version);
 		projectRepository.save(project);
@@ -50,7 +50,7 @@ class ProjectViewEventHandler {
 
 	@EventHandler
 	public void handle(ProjectDeactivatedEvent event, @SequenceNumber Long version) {
-		Project project = projectRepository.findOne(event.getId());
+		Project project = projectRepository.findById(event.getId()).get();
 		project.setActive(Boolean.FALSE);
         project.setAggregateVersion(version);
         projectRepository.save(project);
@@ -58,7 +58,7 @@ class ProjectViewEventHandler {
 
 	@EventHandler
 	public void handle(ProjectUpdatedEvent event, @SequenceNumber Long version) {
-		Project project = projectRepository.findOne(event.getId());
+		Project project = projectRepository.findById(event.getId()).get();
 		project.setDescription(event.getDescription());
 		project.setName(event.getName());
 		project.setRepoUrl(event.getRepoUrl());
